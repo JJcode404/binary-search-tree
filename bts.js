@@ -1,6 +1,7 @@
+import { prettyPrint } from "./prettyprint.js";
 class Node {
     constructor(d){
-        this.node = d,
+        this.data = d,
         this.left = null,
         this.right = null
     }
@@ -17,3 +18,8 @@ function sortedArraytoBts(array,start,end){
     
     return node;
 };
+let root = null;
+const array = [1,2,3,4,5,6,7]
+const n = array.length;
+root = sortedArraytoBts(array,0,n-1);
+prettyPrint(root);
