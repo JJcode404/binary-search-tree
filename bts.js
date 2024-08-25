@@ -19,7 +19,22 @@ function sortedArraytoBts(array,start,end){
     
     return node;
 };
+function findNOde(root, node){
+    if (root === null || root.data === node) {
+        return root;
+    }
+    if(node < root.data){
+        return findNOde(root.left, node)
+    }else if (node > root.data){
+        return findNOde(root.right, node);
+    }
+    return node;
+}
+
 let root = null;
 const n = sortedUniqueArr.length;
 root = sortedArraytoBts(sortedUniqueArr,0,n-1);
-prettyPrint(root);
+prettyPrint(root); 
+// findNOde(root, 8);
+const node4 = findNOde(root, 5)
+prettyPrint(node4);
