@@ -30,6 +30,28 @@ function findNOde(root, node){
     }
     return node;
 }
+function levelOder(root,cb){
+    if(root === null){
+        return
+    }
+    const queue = [];
+    queue.push(root)
+
+    while(queue.length > 0){
+        const visit = queue.shift();
+        cb(visit.data)
+    
+        if(visit.left !== null ){
+            queue.push(visit.left);
+        }
+        if(visit.right !== null){
+            queue.push(visit.right);
+        }
+        
+    }
+
+}
+
 
 let root = null;
 const n = sortedUniqueArr.length;
@@ -38,3 +60,4 @@ prettyPrint(root);
 // findNOde(root, 8);
 const node4 = findNOde(root, 5)
 prettyPrint(node4);
+levelOder(root, (node) => {console.log(node)});
