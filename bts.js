@@ -31,9 +31,13 @@ function findNOde(root, node){
     return node;
 }
 function levelOder(root,cb){
+    if(cb == null){
+        throw new Error ("callback required")
+    }
     if(root === null){
         return
     }
+
     const queue = [];
     queue.push(root)
 
@@ -60,4 +64,4 @@ prettyPrint(root);
 // findNOde(root, 8);
 const node4 = findNOde(root, 5)
 prettyPrint(node4);
-levelOder(root, (node) => {console.log(node)});
+levelOder(root, (node) => console.log(node));
