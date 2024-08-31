@@ -55,13 +55,26 @@ function levelOder(root,cb){
     }
 
 }
-function postOrder(root){
+function postOrder(root, cb){
+    if(cb == null){
+        throw new Error ("callback required")
+    }
     if(root == null) return
-    postOrder(root.left);
-    postOrder(root.right);
-    console.log(root.data);
-}
+    postOrder(root.left, cb);
+    postOrder(root.right, cb);
+    cb(root.data);
+} 
+function preOrder(root, cb){
+    if(cb == null){
+        throw new Error ("callback required")
+    }
+    if(root == nul) return
 
+    console.log(root.data, cb);
+    preOrder(root.left, cb)
+    preOrder(root.rightm, cb)
+
+}
 
 let root = null;
 const n = sortedUniqueArr.length;
@@ -69,5 +82,5 @@ root = sortedArraytoBts(sortedUniqueArr,0,n-1);
 prettyPrint(root); 
 // findNOde(root, 8);
 const node4 = findNOde(root, 5)
-prettyPrint(node4);
+// prettyPrint(node4);
 postOrder(root, (node) => console.log(node));
