@@ -55,6 +55,12 @@ function levelOder(root,cb){
     }
 
 }
+function postOrder(root){
+    if(root == null) return
+    postOrder(root.left);
+    postOrder(root.right);
+    console.log(root.data);
+}
 
 
 let root = null;
@@ -64,4 +70,4 @@ prettyPrint(root);
 // findNOde(root, 8);
 const node4 = findNOde(root, 5)
 prettyPrint(node4);
-levelOder(root, (node) => console.log(node));
+postOrder(root, (node) => console.log(node));
