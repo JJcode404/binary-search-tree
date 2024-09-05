@@ -75,6 +75,19 @@ function preOrder(root, cb){
     preOrder(root.rightm, cb)
 
 }
+function btsHeight(root){
+    if(root == null){
+        return -1
+    }
+    let leftHeight = btsHeight(root.left);
+    let rightHeigt = btsHeight(root.right);
+
+    if(leftHeight > rightHeigt){
+        return leftHeight +1;
+    }else{
+        return rightHeigt +1;
+    }
+}
 
 let root = null;
 const n = sortedUniqueArr.length;
@@ -83,4 +96,5 @@ prettyPrint(root);
 // findNOde(root, 8);
 const node4 = findNOde(root, 5)
 // prettyPrint(node4);
-postOrder(root, (node) => console.log(node));
+// postOrder(root, (node) => console.log(node));
+console.log(btsHeight(root));
