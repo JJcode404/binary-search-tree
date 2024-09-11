@@ -75,19 +75,41 @@ function preOrder(root, cb){
     preOrder(root.rightm, cb)
 
 }
-function btsHeight(root){
+function depth(root, node){
     if(root == null){
-        return -1
+        return -1; // return -1 if the tree is empty
     }
-    let leftHeight = btsHeight(root.left);
-    let rightHeigt = btsHeight(root.right);
 
-    if(leftHeight > rightHeigt){
-        return leftHeight +1;
-    }else{
-        return rightHeigt +1;
+    let queue = [];
+    let depth = 0;
+
+    queue.push(root);
+
+    while(queue.length > 0){
+        let levelSize = queue.length; // Number of nodes at the current level
+
+        // Process all nodes at the current level
+        for(let i = 0; i < levelSize; i++){
+            const visit = queue.shift();
+
+            if(visit.data == node){
+                return depth;
+            }
+
+            if(visit.left !== null){
+                queue.push(visit.left);
+            }
+            if(visit.right !== null){
+                queue.push(visit.right);
+            }
+        }
+
+        depth++; 
     }
+
+    return -1; 
 }
+
 
 let root = null;
 const n = sortedUniqueArr.length;
@@ -97,4 +119,5 @@ prettyPrint(root);
 const node4 = findNOde(root, 5)
 // prettyPrint(node4);
 // postOrder(root, (node) => console.log(node));
-console.log(btsHeight(root));
+// console.log(btsHeight(root));
+console.log(depth(root,6345));
