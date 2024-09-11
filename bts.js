@@ -75,9 +75,22 @@ function preOrder(root, cb){
     preOrder(root.rightm, cb)
 
 }
+function btsHeight(root){
+    if(root == null){
+        return -1
+    }
+    let leftHeight = btsHeight(root.left);
+    let rightHeigt = btsHeight(root.right);
+
+    if(leftHeight > rightHeigt){
+        return leftHeight +1;
+    }else{
+        return rightHeigt +1;
+    }
+}
 function depth(root, node){
     if(root == null){
-        return -1; // return -1 if the tree is empty
+        return null;
     }
 
     let queue = [];
@@ -86,9 +99,8 @@ function depth(root, node){
     queue.push(root);
 
     while(queue.length > 0){
-        let levelSize = queue.length; // Number of nodes at the current level
+        let levelSize = queue.length; 
 
-        // Process all nodes at the current level
         for(let i = 0; i < levelSize; i++){
             const visit = queue.shift();
 
@@ -120,4 +132,4 @@ const node4 = findNOde(root, 5)
 // prettyPrint(node4);
 // postOrder(root, (node) => console.log(node));
 // console.log(btsHeight(root));
-console.log(depth(root,6345));
+console.log(depth(root,324));
