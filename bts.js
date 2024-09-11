@@ -122,6 +122,19 @@ function depth(root, node){
     return -1; 
 }
 
+function isbalanced(root){
+    const leftHeight = btsHeight(root.left)
+    const rightHeigt = btsHeight(root.right)
+    const diff = Math.abs(leftHeight - rightHeigt)
+    console.log(diff)
+
+    if(diff < 1){
+        return "bts is balanced"
+    }else{
+        return "bts is not balanced"
+    }
+}
+
 
 let root = null;
 const n = sortedUniqueArr.length;
@@ -133,3 +146,5 @@ const node4 = findNOde(root, 5)
 // postOrder(root, (node) => console.log(node));
 // console.log(btsHeight(root));
 console.log(depth(root,324));
+console.log(isbalanced(root));
+
