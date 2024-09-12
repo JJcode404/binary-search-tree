@@ -1,5 +1,6 @@
 import { prettyPrint } from "./prettyprint.js";
-import { sortedUniqueArr } from "./mergesort.js";
+import { mergeSort, sortedUniqueArr } from "./mergesort.js";
+import { insertNode } from "./insertbts.js";
 class Node {
     constructor(d){
         this.data = d,
@@ -135,16 +136,42 @@ function isbalanced(root){
     }
 }
 
-
-let root = null;
-const n = sortedUniqueArr.length;
-root = sortedArraytoBts(sortedUniqueArr,0,n-1);
-prettyPrint(root); 
-// findNOde(root, 8);
-const node4 = findNOde(root, 5)
-// prettyPrint(node4);
-// postOrder(root, (node) => console.log(node));
-// console.log(btsHeight(root));
-console.log(depth(root,324));
+function rebalance(root){
+    if(isbalanced(root) === "bts is balanced"){
+        return root;
+    }
+    let nodeArray = [];
+    levelOder(root, (node) => nodeArray.push(node))
+    const sortedArray = mergeSort(nodeArray);
+    const newBts = sortedArraytoBts(sortedArray,0,sortedArray.length-1)
+    return newBts;
+};
+let root =  new Node(30);
+root = insertNode(root, 50);
+root = insertNode(root, 30);
+root = insertNode(root, 20);
+root = insertNode(root, 40);
+root = insertNode(root, 70);
+root = insertNode(root, 60);
+root = insertNode(root, 80);
+prettyPrint(root)
+// let root = null;
+// const n = sortedUniqueArr.length;
+// root = sortedArraytoBts(sortedUniqueArr,0,n-1);
+// prettyPrint(root); 
+// // findNOde(root, 8);
+// const node4 = findNOde(root, 5)
+// // prettyPrint(node4);
+// // postOrder(root, (node) => console.log(node));
+// // console.log(btsHeight(root));
+// console.log(depth(root,324));
 console.log(isbalanced(root));
+const balancedBts = rebalance(root);
+prettyPrint(balancedBts);
+
+export {
+    Node
+}
+
+
 

@@ -56,5 +56,6 @@ const sortedUniqueArr = mergeSort(arr);
 console.log(sortedUniqueArr);
 
 export{
-    sortedUniqueArr
+    sortedUniqueArr,
+    mergeSort
 }

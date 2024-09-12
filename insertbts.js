@@ -1,11 +1,5 @@
 import { prettyPrint } from "./prettyprint.js";
-class Node {
-    constructor(data){
-        this.data = data,
-        this.left = null,
-        this.right = null
-    }
-};
+import { Node } from "./bts.js";
 
 function insertNode(root,data){
     if(root === null){
@@ -29,12 +23,16 @@ function inorder(root) {
         inorder(root.right);
     }
 }
-let root =  new Node(30);
-root = insertNode(root, 50);
-root = insertNode(root, 30);
-root = insertNode(root, 20);
-root = insertNode(root, 40);
-root = insertNode(root, 70);
-root = insertNode(root, 60);
-root = insertNode(root, 80);
-prettyPrint(root)
+// let root =  new Node(30);
+// root = insertNode(root, 50);
+// root = insertNode(root, 30);
+//  root = insertNode(root, 20);
+//  root = insertNode(root, 40);
+//  root = insertNode(root, 70);
+//  root = insertNode(root, 60);
+//  root = insertNode(root, 80);
+//  prettyPrint(root)
+
+export{
+    insertNode
+}
