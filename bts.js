@@ -170,7 +170,8 @@ const balancedBts = rebalance(root);
 prettyPrint(balancedBts);
 
 export {
-    Node
+    Node,
+    sortedArraytoBts,
 }
 
 
