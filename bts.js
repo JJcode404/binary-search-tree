@@ -31,6 +31,15 @@ function findNOde(root, node){
     }
     return node;
 }
+function inorder(root, cb){
+    if(cb == null){
+        throw new Error ("callback required")
+    }
+    if(root == null) return
+    postOrder(root.left, cb);
+    cb(root.data);
+    postOrder(root.right, cb);
+} 
 function levelOder(root,cb){
     if(cb == null){
         throw new Error ("callback required")
@@ -69,11 +78,11 @@ function preOrder(root, cb){
     if(cb == null){
         throw new Error ("callback required")
     }
-    if(root == nul) return
-
-    console.log(root.data, cb);
+    if(root == null) return
+    
+    cb(root.data)
     preOrder(root.left, cb)
-    preOrder(root.rightm, cb)
+    preOrder(root.right, cb)
 
 }
 function btsHeight(root){
@@ -172,6 +181,11 @@ prettyPrint(balancedBts);
 export {
     Node,
     sortedArraytoBts,
+    isbalanced,
+    rebalance,
+    levelOder,
+    postOrder,
+    preOrder
 }
 
 
